@@ -84,7 +84,7 @@ class OpenOcd:
             print("-> ", data)
 
         data = data.decode("ascii").strip()
-        data = data[:-2] # strip trailing \x1a\n
+        data = data[:-1] # strip trailing \x1a
 
         return data
 
@@ -119,9 +119,9 @@ if __name__ == "__main__":
     with OpenOcd() as ocd:
         ocd.send("reset")
 
-        show(ocd.send("ocd_echo \"echo says hi!\""))
+        show(ocd.send("ocd_echo \"echo says hi!\"")[:-1])
 
-        show(ocd.send("capture \"ocd_halt\""))
+        show(ocd.send("capture \"ocd_halt\"")[:-1])
 
         addr = 0
         value = ocd.readVariable(addr)
