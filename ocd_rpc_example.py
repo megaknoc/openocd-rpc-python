@@ -43,7 +43,6 @@ def compareData(a, b):
 class OpenOcd:
     TOKEN = '\x1a'
     def __init__(self, verbose=False):
-        #verbose = True
         self.verbose = verbose
         self.tclRpcIp       = "127.0.0.1"
         self.tclRpcPort     = 6666
@@ -146,4 +145,3 @@ if __name__ == "__main__":
         compareData(read, data)
 
         ocd.send("resume")
-
